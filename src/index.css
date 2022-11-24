@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -31,4 +31,20 @@ body {
   /* self style */
   background-color: black;
   color: white;
+  /* content align */
+  padding: 20px;
+}
+
+.sidebar {
+  /* self align */
+  display: inline-block;
+  height: 100%;
+  width: 240px;
+  /* self style */
+  background-color: #d9d9d9;
+  color: black;
+  border-radius: 10px;
+  border: 2px solid #9c9c9c;
+  /* content align */
+  padding: 10px;
 }
