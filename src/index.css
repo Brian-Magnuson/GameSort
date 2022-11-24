@@ -24,3 +24,11 @@ body {
   /* self align */
   margin-left: 20px;
 }
+
+.content {
+  /* self align */
+  height: calc(100vh - 64px);
+  /* self style */
+  background-color: black;
+  color: white;
+}
