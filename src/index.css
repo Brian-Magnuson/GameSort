@@ -7,3 +7,20 @@
 body {
   font-family: Roboto, sans-serif;
 }
+
+.header {
+  /* self align */
+  height: 64px;
+  /* self style */
+  background: linear-gradient(95.14deg, #17B57A 0%, #6A68D5 100%);
+  color: white;
+  /* content align */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header__title {
+  /* self align */
+  margin-left: 20px;
+}
