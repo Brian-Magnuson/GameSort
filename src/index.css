@@ -40,7 +40,8 @@ body {
   /* content align */
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 50px auto;
+  grid-template-rows: 30px auto;
+  row-gap: 20px;
   padding: 20px;
 }
 
@@ -151,4 +152,15 @@ body {
   height: calc(var(--game-box-width) * 1.4 + 2px);
   /* self style */
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 120px auto;
+  }
+
+  .content__sort-selection {
+    flex-direction: column;
+  }
 }
