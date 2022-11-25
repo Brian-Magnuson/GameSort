@@ -6,7 +6,7 @@
 
 :root {
   --header-height: 64px;
-  --game-box-width: 100px;
+  --game-box-width: 150px;
 }
 
 body {
@@ -137,6 +137,12 @@ body {
   border-style: solid;
   border-image: linear-gradient(#17b57a, #6a68d5) 30;
   border-radius: 5px;
+  text-align: center;
+  /* content align */
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .games-view__game-box:hover {

@@ -7,20 +7,15 @@ export default function GamesView() {
       <section className='games-view'>
         <h3>Games matched:</h3>
         <section className='games-view__grid'>
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
-          <GameBox />
+          <GameBox title='Super Awesome Game' />
+          <GameBox title='Super Awesome Game' />
+          <GameBox title='Super Awesome Game' />
+          <GameBox title='Super Awesome Game' />
+          <GameBox title='Super Awesome Game' />
+          <GameBox title='Super Awesome Game' />
+          <GameBox title='Super Awesome Game' />
+          <GameBox title='Super Awesome Game' />
+          <GameBox title='Super Awesome Game' />
         </section>
       </section>
     </>
