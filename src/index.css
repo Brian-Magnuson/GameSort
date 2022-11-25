@@ -53,6 +53,7 @@ body {
   /* self align */
   width: 140px;
   height: 30px;
+  margin-top: 10px;
   /* self style */
   border: none;
   border-radius: 5px;
@@ -68,4 +69,18 @@ body {
   /* self align */
   width: 138px;
   height: 28px;
+}
+
+.sidebar__filter-section {
+  /* self align */
+  margin-top: 5px;
+  /* self style */
+  border-color: #9c9c9c;
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+.sidebar__filter-section label {
+  /* self align */
+  margin-left: 5px;
 }
