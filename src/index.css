@@ -48,3 +48,24 @@ body {
   /* content align */
   padding: 10px;
 }
+
+.sidebar__submit-button {
+  /* self align */
+  width: 140px;
+  height: 30px;
+  /* self style */
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(95.14deg, #17B57A 0%, #6A68D5 100%);
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sidebar__submit-button:active {
+  /* self align */
+  width: 138px;
+  height: 28px;
+}

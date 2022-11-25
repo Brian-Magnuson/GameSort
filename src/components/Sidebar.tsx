@@ -4,7 +4,9 @@ export default function Sidebar() {
   return (
     <>
       <aside className="sidebar">
-        Sidebar component
+        <button className="sidebar__submit-button">
+          Sort
+        </button>
       </aside>
     </>
   );
