@@ -53,7 +53,8 @@ body {
   /* self align */
   width: 140px;
   height: 30px;
-  margin-top: 10px;
+  display: block;
+  margin: 10px auto 0;
   /* self style */
   border: none;
   border-radius: 5px;
