@@ -4,13 +4,18 @@
   box-sizing: border-box;
 }
 
+:root {
+  --header-height: 64px;
+  --game-box-width: 100px;
+}
+
 body {
   font-family: Roboto, sans-serif;
 }
 
 .header {
   /* self align */
-  height: 64px;
+  height: var(--header-height);
   /* self style */
   background: linear-gradient(95.14deg, #17B57A 0%, #6A68D5 100%);
   color: white;
@@ -27,19 +32,42 @@ body {
 
 .content {
   /* self align */
-  height: calc(100vh - 64px);
+  height: calc(100vh - var(--header-height));
   /* self style */
-  background-color: black;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(48, 48, 48, 1) 25%, rgba(0, 0, 0, 1) 100%);
+  ;
   color: white;
   /* content align */
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 50px auto;
   padding: 20px;
+}
+
+.content__sort-selection {
+  /* self align */
+  display: inline-block;
+  /* content align */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20px 0;
+  gap: 15px;
+}
+
+.content__sort-selection span {
+  /* content align */
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
 
 .sidebar {
   /* self align */
   display: inline-block;
+  grid-row: 1 / -1;
   height: 100%;
-  width: 240px;
+  width: 100%;
   /* self style */
   background-color: #d9d9d9;
   color: black;
@@ -84,4 +112,37 @@ body {
 .sidebar__filter-section label {
   /* self align */
   margin-left: 5px;
+}
+
+.games-view {
+  /* content align */
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.games-view__grid {
+  /* self align */
+  margin-top: 20px;
+  /* content align */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--game-box-width));
+  gap: 15px;
+}
+
+.games-view__game-box {
+  /* self align */
+  width: var(--game-box-width);
+  height: calc(var(--game-box-width) * 1.4);
+  /* self style */
+  border-style: solid;
+  border-image: linear-gradient(#17b57a, #6a68d5) 30;
+  border-radius: 5px;
+}
+
+.games-view__game-box:hover {
+  /* self align */
+  width: calc(var(--game-box-width) + 2px);
+  height: calc(var(--game-box-width) * 1.4 + 2px);
+  /* self style */
+  cursor: pointer;
 }
