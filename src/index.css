@@ -154,6 +154,33 @@ body {
   cursor: pointer;
 }
 
+.game-modal-backdrop {
+  /* self align */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* self style */
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.game-modal {
+  /* self align */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  /* self style */
+  background: white;
+  border-radius: 15px;
+  color: black;
+  /* content align */
+  padding: 15px;
+}
+
 @media only screen and (max-width: 600px) {
   .content {
     grid-template-columns: 1fr 1fr;
