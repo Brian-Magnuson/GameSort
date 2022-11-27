@@ -19,6 +19,7 @@ export default function GamesView() {
     {
       index: 1,
       name: "Super Cool Game",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quos sed maiores obcaecati ullam voluptatem veniam ut eaque corrupti, beatae sunt facere veritatis numquam dicta deserunt earum, incidunt enim esse?",
       rating: 8,
       ratingCount: 200,
       releaseDate: "11/26/2022",

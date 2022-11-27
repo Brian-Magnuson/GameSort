@@ -2,6 +2,7 @@
 export default interface GameInfo {
   index: number,
   name: string,
+  description?: string,
   rating?: number,
   ratingCount?: number,
   releaseDate?: string,
