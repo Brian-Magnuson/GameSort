@@ -1,10 +1,11 @@
 import React from 'react';
+import GameInfo from '../GameInfo';
 import GameBox from './GameBox';
 import GameModal from './GameModal';
 
 export default function GamesView() {
 
-  const gameData = [
+  const gameData: GameInfo[] = [
     {
       index: 0,
       name: "Super Awesome Game",
@@ -28,7 +29,7 @@ export default function GamesView() {
       tags: ["3D", "Open World"],
       ageRatings: ["T", "12"],
     }
-  ]
+  ];
 
   const [gameSelected, setGameSelected] = React.useState(-1);
 

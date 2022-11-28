@@ -10,5 +10,6 @@ export default interface GameInfo {
   platforms?: string[],
   tags?: string[],
   ageRatings?: string[],
-  imageUrl?: string
+  imageUrl?: string,
+  similarGames?: string[]
 }
