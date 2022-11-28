@@ -110,9 +110,25 @@ body {
   border-top-style: solid;
 }
 
+.sidebar__filter-section--scrolling {
+  /* content align */
+  overflow-y: auto;
+}
+
 .sidebar__filter-section label {
   /* self align */
   margin-left: 5px;
+}
+
+.sidebar__filter-section p {
+  /* self style */
+  font-size: 12px;
+}
+
+.sidebar__filter-section p:hover {
+  /* self style */
+  color: blue;
+  cursor: pointer;
 }
 
 .games-view {
