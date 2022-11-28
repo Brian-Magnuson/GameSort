@@ -1,15 +1,20 @@
 import React from 'react';
 import GameInfo from '../GameInfo';
+import MatchResult from '../MatchResult';
+import { gameDataObject } from '../data/data';
 
 interface GameBoxProps {
-  game: GameInfo,
+  matchedGame: MatchResult,
   setGameSelected: React.Dispatch<React.SetStateAction<number>>
 }
 export default function GameBox(props: GameBoxProps) {
 
+  const game: GameInfo = gameDataObject.data.find((elem) => elem.index == props.matchedGame.index)!;
+
   const goSetGame = () => {
-    props.setGameSelected(props.game.index);
+    props.setGameSelected(props.matchedGame.index);
   }
+
 
   return (
     <>
@@ -17,7 +22,7 @@ export default function GameBox(props: GameBoxProps) {
         className="games-view__game-box"
         onClick={goSetGame}
       >
-        <h5>{props.game.name}</h5>
+        <h5>{game.name}</h5>
       </div>
     </>
   );
