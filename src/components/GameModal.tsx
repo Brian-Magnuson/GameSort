@@ -1,7 +1,7 @@
 import React from 'react';
 import { gameDataObject } from '../data/data';
-import GameInfo from '../GameInfo';
-import MatchResult from '../MatchResult';
+import GameInfo from '../interfaces/GameInfo';
+import MatchResult from '../interfaces/MatchResult';
 
 interface GameModalProps {
   setGameSelected: React.Dispatch<React.SetStateAction<number>>

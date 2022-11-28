@@ -1,6 +1,6 @@
 import React from 'react';
-import GameInfo from '../GameInfo';
-import MatchResult from '../MatchResult';
+import GameInfo from '../interfaces/GameInfo';
+import MatchResult from '../interfaces/MatchResult';
 import { gameDataObject } from '../data/data';
 
 interface GameBoxProps {

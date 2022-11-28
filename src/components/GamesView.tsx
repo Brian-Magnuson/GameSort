@@ -1,5 +1,5 @@
 import React from 'react';
-import MatchResult from '../MatchResult';
+import MatchResult from '../interfaces/MatchResult';
 import GameBox from './GameBox';
 import GameModal from './GameModal';
 
