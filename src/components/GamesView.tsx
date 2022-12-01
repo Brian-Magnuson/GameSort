@@ -2,19 +2,17 @@ import React from 'react'
 import MatchResult from '../interfaces/MatchResult'
 import GameBox from './GameBox'
 import GameModal from './GameModal'
-import GameInfo from '../interfaces/GameInfo'
+
+const randomMatches: MatchResult[] = []
+for (let i = 0; i < 100; i++) {
+  randomMatches.push({
+    index: Math.ceil(Math.random() * 100000),
+    matchRating: Math.random() * 100,
+  })
+}
 
 export default function GamesView() {
-  const matches: MatchResult[] = [
-    {
-      index: 5,
-      matchRating: 98,
-    },
-    {
-      index: 1000,
-      matchRating: 70,
-    },
-  ]
+  const matches: MatchResult[] = randomMatches
 
   const [gameSelected, setGameSelected] = React.useState(-1)
 
@@ -28,7 +26,11 @@ export default function GamesView() {
         {gameSelected != -1 && (
           <GameModal
             setGameSelected={setGameSelected}
-            matchedGame={matches.find((match) => match.index == gameSelected)}
+            matchedGame={
+              matches.find(
+                (match) => match.index == gameSelected
+              ) as MatchResult
+            }
           />
         )}
         <h3>Games matched:</h3>

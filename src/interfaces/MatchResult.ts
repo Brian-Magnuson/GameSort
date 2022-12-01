@@ -1,5 +1,4 @@
-
 export default interface MatchResult {
-  index: number,
+  index: number
   matchRating: number
 }

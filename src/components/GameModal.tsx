@@ -1,5 +1,5 @@
 import React from 'react'
-import GameInfo from '../interfaces/GameInfo'
+import { GameInfo, Game } from '../interfaces/GameInfo'
 import MatchResult from '../interfaces/MatchResult'
 import { GlobalContext } from './Content'
 
@@ -9,7 +9,7 @@ interface GameModalProps {
 }
 export default function GameModal(props: GameModalProps) {
   const data = React.useContext(GlobalContext)
-  const game: GameInfo = data[props.matchedGame.index.toString()]!
+  const game: Game = data[props.matchedGame.index.toString()]!
 
   const goUnsetGame = () => {
     props.setGameSelected(-1)

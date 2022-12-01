@@ -1,18 +1,20 @@
 interface Game {
   name: string
   description?: string
-  rating?: number
+  rating: number
   ratingCount?: number
   releaseDate?: string
-  genres?: string[]
-  platforms?: string[]
-  tags?: string[]
+  genres?: string
+  platforms?: string
+  tags?: string
   ageRatings?: string
   imageUrl?: string
-  similarGames?: string[]
-  url?: string[]
+  similarGames?: string
+  url?: string
 }
 
-export default interface GameInfo {
+interface GameInfo {
   [key: string]: Game
 }
+
+export type { Game, GameInfo }
