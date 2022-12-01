@@ -1,4 +1,4 @@
-interface filterDataObject {
+interface FilterDataObject {
   possiblePlatforms: string[]
   possibleGenres: string[]
   possibleAgeRatings: string[]
