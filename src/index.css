@@ -41,7 +41,7 @@ body {
   color: white;
   /* content align */
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: minmax(180px, 20%) auto;
   grid-template-rows: 30px auto;
   row-gap: 20px;
   padding: 20px;
