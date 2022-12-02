@@ -15,9 +15,17 @@ export default function GameBox(props: GameBoxProps) {
     props.setGameSelected(props.matchedGame.index)
   }
 
+  const styles: React.CSSProperties = {
+    backgroundImage: `url(${game.imageUrl})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+  }
+
   return (
     <>
-      <div className='games-view__game-box' onClick={goSetGame}>
+      <div>
+        <div style={styles} className='games-view__game-box' onClick={goSetGame}>
+        </div>
         <h5>{game.name}</h5>
       </div>
     </>

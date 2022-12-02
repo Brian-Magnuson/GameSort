@@ -15,11 +15,18 @@ export default function GameModal(props: GameModalProps) {
     props.setGameSelected(-1)
   }
   console.log(props.matchedGame)
+
+  const styles: React.CSSProperties = {
+    backgroundImage: game.imageUrl && `url(${game.imageUrl.replace('thumb', 'cover_big')})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+  }
+
   const platforms =
     game.platforms != undefined && game.platforms.length != 0
       ? game.platforms
-          .substring(1, game.platforms.length - 1)
-          .replace(/'/gi, '')
+        .substring(1, game.platforms.length - 1)
+        .replace(/'/gi, '')
       : ''
   const genres =
     game.genres != undefined && game.genres.length != 0
@@ -40,15 +47,8 @@ export default function GameModal(props: GameModalProps) {
             <button onClick={goUnsetGame}>Close</button>
           </header>
           <main className='game-modal__content'>
-            <div className='game-modal__game-image'>
-              {game.imageUrl ? (
-                <img
-                  src={game.imageUrl.replace('thumb', 'cover_big')}
-                  alt={`${game.name}-image`}
-                />
-              ) : (
-                <h5>No Image</h5>
-              )}
+            <div style={styles} className='game-modal__game-image'>
+              {!game.imageUrl && <h5>No Image</h5>}
             </div>
             <div className='game-modal__game-info'>
               <h4>{platforms && 'Platforms: '}</h4>
@@ -61,7 +61,7 @@ export default function GameModal(props: GameModalProps) {
               <p>{tags}</p>
               <h4>{game.description && 'Description: '}</h4>
               <p>{game.description}</p>
-              <h4>{game.rating && 'Reviews: '}</h4>
+              <h4>{game.rating != undefined && 'Reviews: '}</h4>
               <p>
                 {game.rating.toFixed(2)}/100 (
                 {game.ratingCount == 0 ? 1 : game.ratingCount})

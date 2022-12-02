@@ -181,8 +181,7 @@ body {
   height: calc(var(--game-box-width) * 1.4);
   /* self style */
   border-style: solid;
-  border-image: linear-gradient(#17b57a, #6a68d5) 30;
-  border-radius: 5px;
+  border-color: white;
   text-align: center;
   /* content align */
   padding: 10px;
@@ -193,10 +192,11 @@ body {
 
 .games-view__game-box:hover {
   /* self align */
-  width: calc(var(--game-box-width) + 2px);
-  height: calc(var(--game-box-width) * 1.4 + 2px);
+  /* width: calc(var(--game-box-width) + 2px);
+  height: calc(var(--game-box-width) * 1.4 + 2px); */
   /* self style */
   cursor: pointer;
+  border-image: linear-gradient(#17b57a, #6a68d5) 30;
 }
 
 .game-modal-backdrop {
