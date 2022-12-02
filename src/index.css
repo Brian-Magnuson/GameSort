@@ -30,7 +30,8 @@ body {
   margin-left: 20px;
 }
 
-.content {
+.content,
+.loading {
   /* self align */
   height: calc(100vh - var(--header-height));
   /* self style */
@@ -45,6 +46,22 @@ body {
   grid-template-rows: 30px auto;
   row-gap: 20px;
   padding: 20px;
+}
+
+.loading {
+  /* self style */
+  color: rgba(255, 255, 255, 0.2);
+  /* content align */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading h1 {
+  animation-name: bouncing-text;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 .content__sort-selection {
@@ -311,5 +328,27 @@ body {
   .game-modal__content {
     flex-direction: column;
     overflow-y: auto;
+  }
+}
+
+@keyframes bouncing-text {
+  0% {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  25% {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  50% {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  75% {
+    margin-top: 20px;
+    margin-bottom: 0;
   }
 }
