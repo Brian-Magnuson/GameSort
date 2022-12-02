@@ -1,20 +1,30 @@
 import React from 'react';
+import FormInput from '../interfaces/FormInput';
 
-export default function SortSelection() {
+interface SortSelectionProps {
+  formInput: FormInput,
+  setFormInput: React.Dispatch<React.SetStateAction<FormInput>>
+}
+export default function SortSelection(props: SortSelectionProps) {
+
+  const goChangeSort = (event: React.ChangeEvent<HTMLInputElement>) => {
+    props.setFormInput((prev) => ({ ...prev, sortSelection: event.target.value }))
+  }
+
   return (
     <>
       <div className="content__sort-selection">
         <h4>Sort Method:</h4>
         <span>
-          <input type="radio" name="Sort" id="Merge" />
+          <input type="radio" name="Sort" id="Merge" value="Merge" checked={props.formInput.sortSelection == "Merge"} onChange={goChangeSort} />
           <label htmlFor="Merge">Merge</label>
         </span>
         <span>
-          <input type="radio" name="Sort" id="Quick" />
+          <input type="radio" name="Sort" id="Quick" value="Quick" checked={props.formInput.sortSelection == "Quick"} onChange={goChangeSort} />
           <label htmlFor="Quick">Quick</label>
         </span>
         <span>
-          <input type="radio" name="Sort" id="Heap" />
+          <input type="radio" name="Sort" id="Heap" value="Heap" checked={props.formInput.sortSelection == "Heap"} onChange={goChangeSort} />
           <label htmlFor="Heap">Heap</label>
         </span>
       </div>

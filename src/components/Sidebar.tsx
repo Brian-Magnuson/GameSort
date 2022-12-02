@@ -1,7 +1,13 @@
 import React from 'react'
 import { filterDataObject } from '../data/filterData'
+import FormInput from '../interfaces/FormInput'
 import FilterSection from './FilterSection'
-export default function Sidebar() {
+
+interface SidebarProps {
+  formInput: FormInput,
+  setFormInput: React.Dispatch<React.SetStateAction<FormInput>>
+}
+export default function Sidebar(props: SidebarProps) {
   return (
     <>
       <aside className='sidebar'>
