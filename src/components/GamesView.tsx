@@ -17,7 +17,7 @@ export default function GamesView() {
   const [gameSelected, setGameSelected] = React.useState(-1)
 
   const gameBoxes = matches.map((elem) => (
-    <GameBox matchedGame={elem} setGameSelected={setGameSelected} />
+    <GameBox key={elem.index} matchedGame={elem} setGameSelected={setGameSelected} />
   ))
 
   return (

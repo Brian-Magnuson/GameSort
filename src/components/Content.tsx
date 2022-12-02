@@ -9,7 +9,6 @@ import FormInput from '../interfaces/FormInput'
 
 let defaultData: GameInfo = {}
 export const GlobalContext = React.createContext(defaultData)
-
 export default function Content() {
   const [data, setData] = React.useState<GameInfo | undefined>(undefined)
   const [loading, setLoading] = React.useState(true)
@@ -28,6 +27,7 @@ export default function Content() {
       ageRatings: ["Everyone", "Teen"],
       afterReleaseDate: "2000-01-01",
       ratingsAtLeast: 50,
+      ratingsAtMost: 1000000,
       ratingCountAtLeast: 1000,
       sortSelection: "Merge"
     }

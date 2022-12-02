@@ -16,15 +16,33 @@ export default function SortSelection(props: SortSelectionProps) {
       <div className="content__sort-selection">
         <h4>Sort Method:</h4>
         <span>
-          <input type="radio" name="Sort" id="Merge" value="Merge" checked={props.formInput.sortSelection == "Merge"} onChange={goChangeSort} />
+          <input
+            type="radio"
+            name="Sort"
+            id="Merge"
+            value="Merge"
+            checked={props.formInput.sortSelection == "Merge"}
+            onChange={goChangeSort} />
           <label htmlFor="Merge">Merge</label>
         </span>
         <span>
-          <input type="radio" name="Sort" id="Quick" value="Quick" checked={props.formInput.sortSelection == "Quick"} onChange={goChangeSort} />
+          <input
+            type="radio"
+            name="Sort"
+            id="Quick"
+            value="Quick"
+            checked={props.formInput.sortSelection == "Quick"}
+            onChange={goChangeSort} />
           <label htmlFor="Quick">Quick</label>
         </span>
         <span>
-          <input type="radio" name="Sort" id="Heap" value="Heap" checked={props.formInput.sortSelection == "Heap"} onChange={goChangeSort} />
+          <input
+            type="radio"
+            name="Sort"
+            id="Heap"
+            value="Heap"
+            checked={props.formInput.sortSelection == "Heap"}
+            onChange={goChangeSort} />
           <label htmlFor="Heap">Heap</label>
         </span>
       </div>
