@@ -25,6 +25,7 @@ export default function GameBox(props: GameBoxProps) {
     <>
       <div>
         <div style={styles} className='games-view__game-box' onClick={goSetGame}>
+          {!game.imageUrl && <h4>{game.name}</h4>}
         </div>
         <h5>{game.name}</h5>
       </div>
