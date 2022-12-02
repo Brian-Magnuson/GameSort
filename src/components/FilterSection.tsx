@@ -27,6 +27,7 @@ export default function FilterSection(props: FilterSectionProps) {
     <>
       <div className='sidebar__filter-section-header'>
         <h4>{props.title}</h4>
+        <br />
         {showMore && <p onClick={() => setShowMore(false)}>Show Less</p>}
       </div>
       <div

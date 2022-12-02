@@ -6,7 +6,7 @@ export default function SearchSection() {
       <div className="sidebar__filter-section">
         <h4>Keywords</h4>
         <label htmlFor="keywords">Search</label>
-        <input type="text" name="keywords" />
+        <input className='sidebar__text-field' type="text" name="keywords" />
       </div>
     </>
   );
