@@ -1,12 +1,16 @@
 import React from 'react'
 import { filterDataObject } from '../data/filterData'
 import FilterSection from './FilterSection'
-import SearchSection from './SearchSection'
 export default function Sidebar() {
   return (
     <>
       <aside className='sidebar'>
-        <SearchSection />
+        <div className="sidebar__filter-section">
+          <h4>Keywords</h4>
+          <label htmlFor="keywords">Search</label>
+          <input className='sidebar__text-field' type="text" name="keywords" />
+        </div>
+
         <FilterSection
           title='Platform'
           choices={filterDataObject.possiblePlatforms}
