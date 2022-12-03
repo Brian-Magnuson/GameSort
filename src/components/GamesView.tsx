@@ -5,22 +5,13 @@ import GameModal from './GameModal'
 import FormInput from '../interfaces/FormInput'
 import { GlobalContext } from './Content'
 
-const randomMatches: MatchResult[] = []
-for (let i = 0; i < 100; i++) {
-  randomMatches.push({
-    index: Math.ceil(Math.random() * 100000),
-    matchRating: Math.random() * 100,
-  })
-}
-
 interface GamesViewProps {
   formInput: FormInput
   findMatchRatingsToggle: Boolean
   setFindMatchRatingsToggle: React.Dispatch<React.SetStateAction<Boolean>>
 }
 export default function GamesView(props: GamesViewProps) {
-  const defaultMatches = randomMatches
-  const [matches, setMatches] = React.useState<MatchResult[]>(defaultMatches)
+  const [matches, setMatches] = React.useState<MatchResult[]>([])
   const data = React.useContext(GlobalContext)
   const [gameSelected, setGameSelected] = React.useState(-1)
   React.useEffect(() => {
@@ -132,20 +123,22 @@ export default function GamesView(props: GamesViewProps) {
 
   return (
     <>
-      <section className='games-view'>
-        {gameSelected != -1 && (
-          <GameModal
-            setGameSelected={setGameSelected}
-            matchedGame={
-              matches.find(
-                (match) => match.index == gameSelected
-              ) as MatchResult
-            }
-          />
-        )}
-        <h3>Games matched:</h3>
-        <section className='games-view__grid'>{gameBoxes}</section>
-      </section>
+      {matches.length > 0 && (
+        <section className='games-view'>
+          {gameSelected != -1 && (
+            <GameModal
+              setGameSelected={setGameSelected}
+              matchedGame={
+                matches.find(
+                  (match) => match.index == gameSelected
+                ) as MatchResult
+              }
+            />
+          )}
+          <h3>Games matched:</h3>
+          <section className='games-view__grid'>{gameBoxes}</section>
+        </section>
+      )}
     </>
   )
 }
