@@ -5,6 +5,7 @@ import GameModal from './GameModal'
 import FormInput from '../interfaces/FormInput'
 import { GlobalContext } from './Content'
 import { mergeSort } from '../functions/sort'
+import calculateMatchRatings from '../functions/calcMatchRatings'
 
 interface GamesViewProps {
   formInput: FormInput
