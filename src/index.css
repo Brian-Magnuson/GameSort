@@ -122,6 +122,23 @@ body {
   height: 28px;
 }
 
+.sidebar__reset-button {
+  /* self align */
+  display: block;
+  margin: 10px auto 0;
+  /* self style */
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.sidebar__reset-button:hover {
+  /* self style */
+  color: red;
+}
+
 .sidebar__filter-section-header {
   /* self align */
   margin-top: 5px;

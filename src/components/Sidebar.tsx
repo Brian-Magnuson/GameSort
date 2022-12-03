@@ -31,6 +31,20 @@ export default function Sidebar(props: SidebarProps) {
     console.log(props.formInput)
   }
 
+  const goResetFilters = () => {
+    props.setFormInput({
+      keywords: '',
+      platforms: [],
+      genres: [],
+      ageRatings: [],
+      afterReleaseDate: '',
+      ratingsAtLeast: 0,
+      ratingsAtMost: 100,
+      ratingCountAtLeast: 0,
+      sortSelection: 'Merge',
+    })
+  }
+
   return (
     <>
       <aside className='sidebar'>
@@ -136,6 +150,9 @@ export default function Sidebar(props: SidebarProps) {
 
         <button className='sidebar__submit-button' onClick={goSort}>
           Sort
+        </button>
+        <button className='sidebar__reset-button' onClick={goResetFilters}>
+          Reset filters
         </button>
       </aside>
     </>
