@@ -34,7 +34,7 @@ export default function GameBox(props: GameBoxProps) {
           onClick={goSetGame}
         >
           <div className='games-view__game-box-badge'>
-            {props.matchedGame.matchRating.toFixed(2)}
+            {(props.matchedGame.matchRating * 100).toFixed(2)}%
           </div>
           {!game.imageUrl && <h4>{game.name}</h4>}
         </div>

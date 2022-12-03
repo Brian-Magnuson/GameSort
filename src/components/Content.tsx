@@ -23,11 +23,11 @@ export default function Content() {
     keywords: '',
     platforms: [],
     genres: [],
-    ageRatings: ['Everyone', 'Teen'],
+    ageRatings: [],
     afterReleaseDate: '2000-01-01',
-    ratingsAtLeast: 50,
-    ratingsAtMost: 1000000,
-    ratingCountAtLeast: 1000,
+    ratingsAtLeast: 20,
+    ratingsAtMost: 100,
+    ratingCountAtLeast: 50,
     sortSelection: 'Merge',
   })
   const [findMatchRatingsToggle, setFindMatchRatingsToggle] =

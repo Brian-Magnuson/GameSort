@@ -114,6 +114,7 @@ export default function Sidebar(props: SidebarProps) {
             type='number'
             name='ratingsAtMost'
             min={0}
+            max={100}
             value={Number(props.formInput.ratingsAtMost)}
             onChange={(e) => plsGoChangeNumField(e)}
           />
