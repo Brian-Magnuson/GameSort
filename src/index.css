@@ -230,6 +230,24 @@ body {
   padding: 3px 5px;
 }
 
+.games-view button {
+  /* self align */
+  width: 150px;
+  height: 30px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  /* self style */
+  border: none;
+  border-radius: 5px;
+  background: white;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .game-modal-backdrop {
   /* self align */
   position: absolute;
