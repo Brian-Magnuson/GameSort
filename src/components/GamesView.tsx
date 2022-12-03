@@ -87,7 +87,7 @@ export default function GamesView(props: GamesViewProps) {
         <section className='games-view__grid'>{gameBoxes}</section>
 
         {props.matches[0] && props.matches[0]['index'] != -1 && numDisplayed != props.matches.length &&
-          <button onClick={goShowMoreGames}>Show more games</button>
+          <button className='games-view__show-more-button' onClick={goShowMoreGames}>Show more games</button>
         }
       </section>
     </>

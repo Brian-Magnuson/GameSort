@@ -230,7 +230,7 @@ body {
   padding: 3px 5px;
 }
 
-.games-view button {
+.games-view__show-more-button {
   /* self align */
   width: 150px;
   height: 30px;
