@@ -4,7 +4,6 @@ import GameBox from './GameBox'
 import GameModal from './GameModal'
 import FormInput from '../interfaces/FormInput'
 import { GlobalContext } from './Content'
-import { Heap } from 'heap-js'
 
 const randomMatches: MatchResult[] = []
 for (let i = 0; i < 100; i++) {
