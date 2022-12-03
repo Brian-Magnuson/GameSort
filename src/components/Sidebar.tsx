@@ -4,38 +4,40 @@ import FormInput from '../interfaces/FormInput'
 import FilterSection from './FilterSection'
 
 interface SidebarProps {
-  formInput: FormInput,
+  formInput: FormInput
   setFormInput: React.Dispatch<React.SetStateAction<FormInput>>
+  findMatchRatingsToggle: Boolean
+  setFindMatchRatingsToggle: React.Dispatch<React.SetStateAction<Boolean>>
 }
 export default function Sidebar(props: SidebarProps) {
-
   const plsGoChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
     props.setFormInput((prev) => ({
       ...prev,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }))
   }
   const plsGoChangeNumField = (event: React.ChangeEvent<HTMLInputElement>) => {
     props.setFormInput((prev) => ({
       ...prev,
-      [event.target.name]: Number(event.target.value)
+      [event.target.name]: Number(event.target.value),
     }))
   }
 
   const goSort = () => {
-    console.log(props.formInput);
+    props.setFindMatchRatingsToggle(!props.findMatchRatingsToggle)
+    console.log(props.formInput)
   }
 
   return (
     <>
       <aside className='sidebar'>
-        <div className="sidebar__filter-section">
+        <div className='sidebar__filter-section'>
           <h4>Keywords</h4>
-          <label htmlFor="keywords">Search</label>
+          <label htmlFor='keywords'>Search</label>
           <input
             className='sidebar__text-field'
-            type="text"
-            name="keywords"
+            type='text'
+            name='keywords'
             value={props.formInput.keywords}
             onChange={(e) => plsGoChangeField(e)}
           />
@@ -46,7 +48,7 @@ export default function Sidebar(props: SidebarProps) {
           choices={filterDataObject.possiblePlatforms}
           numberDisplayed={4}
           formInput={props.formInput}
-          formInputField="platforms"
+          formInputField='platforms'
           setFormInput={props.setFormInput}
         />
         <FilterSection
@@ -54,7 +56,7 @@ export default function Sidebar(props: SidebarProps) {
           choices={filterDataObject.possibleGenres}
           numberDisplayed={4}
           formInput={props.formInput}
-          formInputField="genres"
+          formInputField='genres'
           setFormInput={props.setFormInput}
         />
         <FilterSection
@@ -62,11 +64,11 @@ export default function Sidebar(props: SidebarProps) {
           choices={filterDataObject.possibleAgeRatings}
           numberDisplayed={4}
           formInput={props.formInput}
-          formInputField="ageRatings"
+          formInputField='ageRatings'
           setFormInput={props.setFormInput}
         />
         <div className='sidebar__filter-section'>
-          <div className="sidebar__filter-section-header">
+          <div className='sidebar__filter-section-header'>
             <h4>Release Date</h4>
           </div>
 
@@ -90,7 +92,7 @@ export default function Sidebar(props: SidebarProps) {
         </div>
 
         <div className='sidebar__filter-section'>
-          <div className="sidebar__filter-section-header">
+          <div className='sidebar__filter-section-header'>
             <h4>Review Ratings</h4>
           </div>
 
@@ -128,7 +130,9 @@ export default function Sidebar(props: SidebarProps) {
           />
         </div>
 
-        <button className='sidebar__submit-button' onClick={goSort}>Sort</button>
+        <button className='sidebar__submit-button' onClick={goSort}>
+          Sort
+        </button>
       </aside>
     </>
   )

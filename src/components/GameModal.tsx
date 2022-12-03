@@ -14,19 +14,19 @@ export default function GameModal(props: GameModalProps) {
   const goUnsetGame = () => {
     props.setGameSelected(-1)
   }
-  console.log(props.matchedGame)
 
   const styles: React.CSSProperties = {
-    backgroundImage: game.imageUrl && `url(${game.imageUrl.replace('thumb', 'cover_big')})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center"
+    backgroundImage:
+      game.imageUrl && `url(${game.imageUrl.replace('thumb', 'cover_big')})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   }
 
   const platforms =
     game.platforms != undefined && game.platforms.length != 0
       ? game.platforms
-        .substring(1, game.platforms.length - 1)
-        .replace(/'/gi, '')
+          .substring(1, game.platforms.length - 1)
+          .replace(/'/gi, '')
       : ''
   const genres =
     game.genres != undefined && game.genres.length != 0

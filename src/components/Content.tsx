@@ -19,20 +19,19 @@ export default function Content() {
     })
   })
 
-  const [formInput, setFormInput] = React.useState<FormInput>(
-    {
-      keywords: "",
-      platforms: [],
-      genres: [],
-      ageRatings: ["Everyone", "Teen"],
-      afterReleaseDate: "2000-01-01",
-      ratingsAtLeast: 50,
-      ratingsAtMost: 1000000,
-      ratingCountAtLeast: 1000,
-      sortSelection: "Merge"
-    }
-  )
-
+  const [formInput, setFormInput] = React.useState<FormInput>({
+    keywords: '',
+    platforms: [],
+    genres: [],
+    ageRatings: ['Everyone', 'Teen'],
+    afterReleaseDate: '2000-01-01',
+    ratingsAtLeast: 50,
+    ratingsAtMost: 1000000,
+    ratingCountAtLeast: 1000,
+    sortSelection: 'Merge',
+  })
+  const [findMatchRatingsToggle, setFindMatchRatingsToggle] =
+    React.useState<Boolean>(false)
   return (
     <>
       {loading ? (
@@ -40,9 +39,18 @@ export default function Content() {
       ) : (
         <main className='content'>
           <GlobalContext.Provider value={data as GameInfo}>
-            <Sidebar formInput={formInput} setFormInput={setFormInput} />
+            <Sidebar
+              formInput={formInput}
+              setFormInput={setFormInput}
+              findMatchRatingsToggle={findMatchRatingsToggle}
+              setFindMatchRatingsToggle={setFindMatchRatingsToggle}
+            />
             <SortSelection formInput={formInput} setFormInput={setFormInput} />
-            <GamesView />
+            <GamesView
+              formInput={formInput}
+              findMatchRatingsToggle={findMatchRatingsToggle}
+              setFindMatchRatingsToggle={setFindMatchRatingsToggle}
+            />
           </GlobalContext.Provider>
         </main>
       )}
