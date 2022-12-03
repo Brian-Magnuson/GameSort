@@ -4,6 +4,7 @@ import GameBox from './GameBox'
 import GameModal from './GameModal'
 import FormInput from '../interfaces/FormInput'
 import { GlobalContext } from './Content'
+import { mergeSort } from '../functions/sort'
 
 const randomMatches: MatchResult[] = []
 for (let i = 0; i < 100; i++) {
@@ -23,6 +24,7 @@ export default function GamesView(props: GamesViewProps) {
   const [matches, setMatches] = React.useState<MatchResult[]>(defaultMatches)
   const data = React.useContext(GlobalContext)
   const [gameSelected, setGameSelected] = React.useState(-1)
+
   React.useEffect(() => {
     if (props.findMatchRatingsToggle) {
       props.setFindMatchRatingsToggle(false)
@@ -118,6 +120,7 @@ export default function GamesView(props: GamesViewProps) {
       console.log('done sorting')
     }
   }, [props.findMatchRatingsToggle])
+
   const gameBoxes = matches.map((elem, index) => {
     if (index <= 100) {
       return (
