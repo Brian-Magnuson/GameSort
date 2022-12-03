@@ -6,6 +6,7 @@ import { GameInfo } from '../interfaces/GameInfo'
 import dataFetch from '../data/data'
 import Loading from './Loading'
 import FormInput from '../interfaces/FormInput'
+import MatchResult from '../interfaces/MatchResult'
 
 let defaultData: GameInfo = {}
 export const GlobalContext = React.createContext(defaultData)
@@ -32,6 +33,9 @@ export default function Content() {
   })
   const [findMatchRatingsToggle, setFindMatchRatingsToggle] =
     React.useState<Boolean>(false)
+  const [matches, setMatches] = React.useState<MatchResult[]>([
+    { index: -1, matchRating: -1 },
+  ])
   return (
     <>
       {loading ? (
@@ -44,12 +48,16 @@ export default function Content() {
               setFormInput={setFormInput}
               findMatchRatingsToggle={findMatchRatingsToggle}
               setFindMatchRatingsToggle={setFindMatchRatingsToggle}
+              matches={matches}
+              setMatches={setMatches}
             />
             <SortSelection formInput={formInput} setFormInput={setFormInput} />
             <GamesView
               formInput={formInput}
               findMatchRatingsToggle={findMatchRatingsToggle}
               setFindMatchRatingsToggle={setFindMatchRatingsToggle}
+              matches={matches}
+              setMatches={setMatches}
             />
           </GlobalContext.Provider>
         </main>

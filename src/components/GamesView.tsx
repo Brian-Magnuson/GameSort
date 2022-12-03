@@ -11,9 +11,10 @@ interface GamesViewProps {
   formInput: FormInput
   findMatchRatingsToggle: Boolean
   setFindMatchRatingsToggle: React.Dispatch<React.SetStateAction<Boolean>>
+  matches: MatchResult[]
+  setMatches: React.Dispatch<React.SetStateAction<MatchResult[]>>
 }
 export default function GamesView(props: GamesViewProps) {
-  const [matches, setMatches] = React.useState<MatchResult[]>([])
   const data = React.useContext(GlobalContext)
   const [gameSelected, setGameSelected] = React.useState(-1)
   const [sortTime, setSortTime] = React.useState(0)
@@ -27,12 +28,16 @@ export default function GamesView(props: GamesViewProps) {
       mergeSort(newMatches)
       const endTime = performance.now()
       setSortTime(endTime - startTime)
-      setMatches(newMatches)
+      props.setMatches(newMatches)
     }
   }, [props.findMatchRatingsToggle])
+  React.useEffect(() => {
+    if (props.matches.length == 0) props.setFindMatchRatingsToggle(true)
+  }, [props.matches])
 
-  const gameBoxes = matches.map((elem, index) => {
-    if (index <= 100) {
+  const gameBoxes = props.matches.map((elem, index) => {
+    if (props.matches.length == 1 && props.matches[0]['index'] == -1) return
+    else if (index <= 100) {
       return (
         <GameBox
           key={elem.index}
@@ -45,13 +50,13 @@ export default function GamesView(props: GamesViewProps) {
 
   return (
     <>
-      {matches.length > 0 && (
+      {!props.findMatchRatingsToggle && (
         <section className='games-view'>
           {gameSelected != -1 && (
             <GameModal
               setGameSelected={setGameSelected}
               matchedGame={
-                matches.find(
+                props.matches.find(
                   (match) => match.index == gameSelected
                 ) as MatchResult
               }

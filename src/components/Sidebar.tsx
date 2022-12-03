@@ -2,12 +2,15 @@ import React from 'react'
 import { filterDataObject } from '../data/filterData'
 import FormInput from '../interfaces/FormInput'
 import FilterSection from './FilterSection'
+import MatchResult from '../interfaces/MatchResult'
 
 interface SidebarProps {
   formInput: FormInput
   setFormInput: React.Dispatch<React.SetStateAction<FormInput>>
   findMatchRatingsToggle: Boolean
   setFindMatchRatingsToggle: React.Dispatch<React.SetStateAction<Boolean>>
+  matches: MatchResult[]
+  setMatches: React.Dispatch<React.SetStateAction<MatchResult[]>>
 }
 export default function Sidebar(props: SidebarProps) {
   const plsGoChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +27,7 @@ export default function Sidebar(props: SidebarProps) {
   }
 
   const goSort = () => {
-    props.setFindMatchRatingsToggle(!props.findMatchRatingsToggle)
+    props.setMatches([])
     console.log(props.formInput)
   }
 
