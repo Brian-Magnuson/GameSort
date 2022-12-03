@@ -50,22 +50,20 @@ export default function GamesView(props: GamesViewProps) {
 
   return (
     <>
-      {!props.findMatchRatingsToggle && (
-        <section className='games-view'>
-          {gameSelected != -1 && (
-            <GameModal
-              setGameSelected={setGameSelected}
-              matchedGame={
-                props.matches.find(
-                  (match) => match.index == gameSelected
-                ) as MatchResult
-              }
-            />
-          )}
-          <h3>Sort Time: {sortTime.toFixed(1)} ms; Games matched:</h3>
-          <section className='games-view__grid'>{gameBoxes}</section>
-        </section>
-      )}
+      <section className='games-view'>
+        {gameSelected != -1 && (
+          <GameModal
+            setGameSelected={setGameSelected}
+            matchedGame={
+              props.matches.find(
+                (match) => match.index == gameSelected
+              ) as MatchResult
+            }
+          />
+        )}
+        <h3>Sort Time: {sortTime.toFixed(1)} ms; Games matched:</h3>
+        <section className='games-view__grid'>{gameBoxes}</section>
+      </section>
     </>
   )
 }
