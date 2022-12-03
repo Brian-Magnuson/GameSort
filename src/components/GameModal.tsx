@@ -25,8 +25,8 @@ export default function GameModal(props: GameModalProps) {
   const platforms =
     game.platforms != undefined && game.platforms.length != 0
       ? game.platforms
-          .substring(1, game.platforms.length - 1)
-          .replace(/'/gi, '')
+        .substring(1, game.platforms.length - 1)
+        .replace(/'/gi, '')
       : ''
   const genres =
     game.genres != undefined && game.genres.length != 0
@@ -43,7 +43,7 @@ export default function GameModal(props: GameModalProps) {
       <div className='game-modal-backdrop'>
         <div className='game-modal'>
           <header className='game-modal__header'>
-            <h1>{game.name}</h1>
+            <h1>{game.name} </h1>
             <button onClick={goUnsetGame}>Close</button>
           </header>
           <main className='game-modal__content'>
@@ -51,6 +51,7 @@ export default function GameModal(props: GameModalProps) {
               {!game.imageUrl && <h5>No Image</h5>}
             </div>
             <div className='game-modal__game-info'>
+              <h3>{(props.matchedGame.matchRating * 100).toFixed(2)}% match</h3>
               <h4>{platforms && 'Platforms: '}</h4>
               <p>{platforms}</p>
               <h4>{game.releaseDate && 'Release Date: '}</h4>
