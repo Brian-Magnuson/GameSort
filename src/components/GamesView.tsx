@@ -15,6 +15,7 @@ export default function GamesView(props: GamesViewProps) {
   const [matches, setMatches] = React.useState<MatchResult[]>([])
   const data = React.useContext(GlobalContext)
   const [gameSelected, setGameSelected] = React.useState(-1)
+  const [sortTime, setSortTime] = React.useState(0)
 
   React.useEffect(() => {
     if (props.findMatchRatingsToggle) {
@@ -98,15 +99,10 @@ export default function GamesView(props: GamesViewProps) {
         newMatches.push({ matchRating: currMatchRating, index: i })
       }
       console.log('done matching ratings')
-      newMatches.sort((obj1, obj2) => {
-        if (obj1['matchRating'] > obj2['matchRating']) {
-          return -1
-        }
-        if (obj1['matchRating'] < obj2['matchRating']) {
-          return 1
-        }
-        return 0
-      })
+      const startTime = performance.now();
+      mergeSort(newMatches)
+      const endTime = performance.now();
+      setSortTime(endTime - startTime)
       setMatches(newMatches)
       console.log('done sorting')
     }
@@ -138,7 +134,7 @@ export default function GamesView(props: GamesViewProps) {
               }
             />
           )}
-          <h3>Games matched:</h3>
+          <h3>Sort Time: {sortTime.toFixed(1)} ms; Games matched:</h3>
           <section className='games-view__grid'>{gameBoxes}</section>
         </section>
       )}
