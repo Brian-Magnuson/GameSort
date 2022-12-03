@@ -23,13 +23,11 @@ export default function GamesView(props: GamesViewProps) {
       props.setFindMatchRatingsToggle(false)
       let newMatches: MatchResult[] = []
       calculateMatchRatings(data, props.formInput, newMatches)
-      console.log('done matching ratings')
       const startTime = performance.now()
       mergeSort(newMatches)
       const endTime = performance.now()
       setSortTime(endTime - startTime)
       setMatches(newMatches)
-      console.log('done sorting')
     }
   }, [props.findMatchRatingsToggle])
 
