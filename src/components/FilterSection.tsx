@@ -9,18 +9,32 @@ interface FilterSectionProps {
   formInputField: 'platforms' | 'genres' | 'ageRatings'
   setFormInput: React.Dispatch<React.SetStateAction<FormInput>>
 }
+/**
+ * Contains a list of checkboxes that allow the user to select different values.
+ * Contained only within Sidebar; the numberDisplayed can be adjusted to change
+ * how many options are shown before the user has to click 'Show more'
+ * Selecting an option will change the formInputState contained in the Content
+ * component.
+ * Only used exactly 3 times: for platforms, genres, and ageRatings
+ * @param props @see FilterSectionProps
+ * @returns FilterSection component
+ */
 export default function FilterSection(props: FilterSectionProps) {
   const [showMore, setShowMore] = React.useState(false)
   const goChangeSelection = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log(Array.isArray(props.formInput[props.formInputField]))
+
+    // When the checkbox is checked...
     if (event.target.checked) {
+      // Add the item to the array
       const newArray = Array.from(props.formInput[props.formInputField]);
       newArray.push(event.target.value)
       props.setFormInput((prev) => ({
         ...prev,
         [props.formInputField]: [...newArray]
       }))
+      // When the checkbox is unchecked...
     } else {
+      // Remove the item from the array
       const index = props.formInput[props.formInputField].indexOf(event.target.value);
       const newArray = Array.from(props.formInput[props.formInputField]);
       newArray.splice(index, 1)
@@ -31,6 +45,7 @@ export default function FilterSection(props: FilterSectionProps) {
     }
   }
 
+  // Render all the selection choices
   const selectionChoices = props.choices.map((elem, index) => {
     if (index < props.numberDisplayed || showMore) {
       return (

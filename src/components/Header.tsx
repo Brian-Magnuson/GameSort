@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Simple component for the header
+ * @returns Header component
+ */
 export default function Header() {
   return (
     <>

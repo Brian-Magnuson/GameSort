@@ -14,24 +14,43 @@ interface GamesViewProps {
   matches: MatchResult[]
   setMatches: React.Dispatch<React.SetStateAction<MatchResult[]>>
 }
+/**
+ * The component where the game boxes and sort time are displayed.
+ * Also displays GameModal when a game is selected.
+ * Reads matches, and uses the data from GlobalContext to create a list of
+ * all games to be rendered to the screen.
+ * Also contains a React effect where the matching algorithm and sort are
+ * triggered.
+ * @param props @see GamesViewProps
+ * @returns GamesView component
+ */
 export default function GamesView(props: GamesViewProps) {
   const data = React.useContext(GlobalContext)
+  // If gameSelected is -1, then the modal does not render
+  // If gameSelected is not -1, then the value reflects the index of the game
+  // being displayed.
   const [gameSelected, setGameSelected] = React.useState(-1)
   const [sortTime, setSortTime] = React.useState(0)
   const [numDisplayed, setNumDisplayed] = React.useState(100);
 
+  // When props.findMatchRatingsToggle changes...
   React.useEffect(() => {
     if (props.findMatchRatingsToggle) {
       props.setFindMatchRatingsToggle(false)
+      // Create an empty array of matches
       let newMatches: MatchResult[] = []
+      // Calculate all the match results
       calculateMatchRatings(data, props.formInput, newMatches)
+      // Sort everything
       const startTime = performance.now()
       mergeSort(newMatches)
       const endTime = performance.now()
+      // Set the sort time and matches
       setSortTime(endTime - startTime)
       props.setMatches(newMatches)
     }
   }, [props.findMatchRatingsToggle])
+
   React.useEffect(() => {
     if (props.matches.length == 0) props.setFindMatchRatingsToggle(true)
     setNumDisplayed(100)
@@ -41,6 +60,7 @@ export default function GamesView(props: GamesViewProps) {
     if (props.matches.length == 1 && props.matches[0]['index'] == -1) {
       return
     }
+    // Sets a cap on the number of games that can be displayed at once
     if (props.matches.length < numDisplayed) {
       setNumDisplayed(props.matches.length)
     }
@@ -55,6 +75,7 @@ export default function GamesView(props: GamesViewProps) {
     }
   })
 
+  // Displays 100 more games when the user clicks a button
   const goShowMoreGames = () => {
     setNumDisplayed((prev) => prev + 100)
   }

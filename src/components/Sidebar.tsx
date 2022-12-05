@@ -12,13 +12,27 @@ interface SidebarProps {
   matches: MatchResult[]
   setMatches: React.Dispatch<React.SetStateAction<MatchResult[]>>
 }
+/**
+ * Contains all the filter options for the end user, allowing him or her to
+ * select things such as platform, genre, or age rating.
+ * Is closely tied with the formInput state located in Content.
+ * Displayed at all times on the left side of the web app within the Content
+ * component.
+ * Also contains the sort button which triggers the calcMatchRatings and sort
+ * functions to create a MatchResult[].
+ * @param props @see SidebarProps
+ * @returns Sidebar component
+ */
 export default function Sidebar(props: SidebarProps) {
+
+  // Changes a string field within the formInput state
   const plsGoChangeField = (event: React.ChangeEvent<HTMLInputElement>) => {
     props.setFormInput((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
     }))
   }
+  // Changes a numeric field within the formInput state
   const plsGoChangeNumField = (event: React.ChangeEvent<HTMLInputElement>) => {
     props.setFormInput((prev) => ({
       ...prev,
@@ -26,11 +40,13 @@ export default function Sidebar(props: SidebarProps) {
     }))
   }
 
+  // Trigger the matching algorithm and sorting algorithm
   const goSort = () => {
     props.setMatches([])
     console.log(props.formInput)
   }
 
+  // Reset filters to include ALL games
   const goResetFilters = () => {
     props.setFormInput({
       keywords: '',
