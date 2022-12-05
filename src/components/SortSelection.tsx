@@ -54,6 +54,16 @@ export default function SortSelection(props: SortSelectionProps) {
             onChange={goChangeSort} />
           <label htmlFor="Heap">Heap</label>
         </span>
+        <span>
+          <input
+            type="radio"
+            name="Sort"
+            id="JsSort"
+            value="JsSort"
+            checked={props.formInput.sortSelection == "JsSort"}
+            onChange={goChangeSort} />
+          <label htmlFor="JsSort">JS Sort</label>
+        </span>
       </div>
     </>
   );

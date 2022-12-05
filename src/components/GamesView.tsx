@@ -4,7 +4,7 @@ import GameBox from './GameBox'
 import GameModal from './GameModal'
 import FormInput from '../interfaces/FormInput'
 import { GlobalContext } from './Content'
-import { mergeSort } from '../functions/sort'
+import { mergeSort, quickSort, heapSort, jsSort } from '../functions/sort'
 import calculateMatchRatings from '../functions/calcMatchRatings'
 
 interface GamesViewProps {
@@ -39,11 +39,25 @@ export default function GamesView(props: GamesViewProps) {
       props.setFindMatchRatingsToggle(false)
       // Create an empty array of matches
       let newMatches: MatchResult[] = []
+
+      // Set the sorting algorithm
+      let sortingFunc: (arr: MatchResult[]) => void
+      if (props.formInput.sortSelection == "Merge")
+        sortingFunc = mergeSort;
+      else if (props.formInput.sortSelection == "Quick")
+        sortingFunc = quickSort;
+      else if (props.formInput.sortSelection == "Heap")
+        sortingFunc = heapSort;
+      else if (props.formInput.sortSelection == "JsSort")
+        sortingFunc = jsSort;
+      else
+        sortingFunc = jsSort;
+
       // Calculate all the match results
       calculateMatchRatings(data, props.formInput, newMatches)
       // Sort everything
       const startTime = performance.now()
-      mergeSort(newMatches)
+      sortingFunc(newMatches)
       const endTime = performance.now()
       // Set the sort time and matches
       setSortTime(endTime - startTime)
