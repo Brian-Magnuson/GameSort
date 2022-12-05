@@ -78,7 +78,7 @@ function minHeapifyDown(arr: MatchResult[], n: number, index: number) {
 }
 
 export function heapSort(arr: MatchResult[]) {
-  for (let i = (arr.length / 2 - 1); i >= 0; i--) {
+  for (let i = (Math.floor(arr.length / 2 - 1)); i >= 0; i--) {
     minHeapifyDown(arr, arr.length, i);
   }
 
