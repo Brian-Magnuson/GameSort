@@ -1,3 +1,6 @@
+/**
+ * Defines the shape of a Game object used by GameModal and GameBox components
+ */
 interface Game {
   name: string
   description?: string
@@ -29,6 +32,9 @@ interface NewGame {
   url?: string
 }
 
+/**
+ * Defines the shape of the data object located in public/data/data.json
+ */
 interface GameInfo {
   [key: string]: Game
 }
