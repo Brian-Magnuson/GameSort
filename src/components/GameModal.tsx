@@ -7,21 +7,33 @@ interface GameModalProps {
   setGameSelected: React.Dispatch<React.SetStateAction<number>>
   matchedGame: MatchResult
 }
+/**
+ * Contains all the information about the game from data. 
+ * The game information is looked up by its index, which is provided in the
+ * matchedGame property.
+ * @param props @see GameModalProps
+ * @returns GameModal component
+ */
 export default function GameModal(props: GameModalProps) {
   const data = React.useContext(GlobalContext)
   const game: Game = data[props.matchedGame.index.toString()]!
 
+  // When the close button is clicked, gameSelected becomes -1, which causes
+  // the modal to be unloaded.
   const goUnsetGame = () => {
     props.setGameSelected(-1)
   }
 
+  // Render the game image over the 'No Image' div if the game image exists
   const styles: React.CSSProperties = {
+    // When 'thumb' is replaced with 'cover_big', a higher res image is rendered
     backgroundImage:
       game.imageUrl && `url(${game.imageUrl.replace('thumb', 'cover_big')})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   }
 
+  // Render certain things only if the data for it exists
   const platforms =
     game.platforms != undefined && game.platforms.length != 0
       ? game.platforms

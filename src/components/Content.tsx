@@ -10,6 +10,12 @@ import MatchResult from '../interfaces/MatchResult'
 
 let defaultData: GameInfo = {}
 export const GlobalContext = React.createContext(defaultData)
+/**
+ * Contains the Sidebar, SortSelection, and Gamesview components.
+ * Also stores the state for the form input where it can be accessed by
+ * GamesView and used to determine what games to display.
+ * @returns Content component
+ */
 export default function Content() {
   const [data, setData] = React.useState<GameInfo | undefined>(undefined)
   const [loading, setLoading] = React.useState(true)
@@ -20,6 +26,7 @@ export default function Content() {
     })
   })
 
+  // State for the form input from the Sidebar and SortSelection components
   const [formInput, setFormInput] = React.useState<FormInput>({
     keywords: '',
     platforms: [],
@@ -33,6 +40,8 @@ export default function Content() {
   })
   const [findMatchRatingsToggle, setFindMatchRatingsToggle] =
     React.useState<Boolean>(false)
+  // A list of matches after the calcMatchRatings function is run.
+  // This default value tells GamesView not to render any games.
   const [matches, setMatches] = React.useState<MatchResult[]>([
     { index: -1, matchRating: -1 },
   ])

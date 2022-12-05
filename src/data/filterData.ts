@@ -3,7 +3,10 @@ interface FilterDataObject {
   possibleGenres: string[]
   possibleAgeRatings: string[]
 }
-
+/**
+ * All of the possible platforms, possible genres, and possible age ratings
+ * from our data set.
+ */
 export const filterDataObject: FilterDataObject = {
   possiblePlatforms: [
     'Xbox One',
