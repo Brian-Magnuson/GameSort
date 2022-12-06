@@ -1,10 +1,11 @@
 import MatchResult from "../interfaces/MatchResult";
 
 /*
-The merge, heap, and quick sorting algorithms are based off of the lecture
+The merge and quick sorting algorithms are based off of the lecture
 slides created for our Data Structures and Algorithms course, which can be found
 in this repository:
 https://github.com/COP3530/Instructional-Content
+The heap sort was adapted from the Discussion Slides on Heaps & Priority Queues and Sorting
 */
 
 function merge(arr: MatchResult[], left: number, mid: number, right: number) {
