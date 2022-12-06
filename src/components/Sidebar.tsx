@@ -43,7 +43,7 @@ export default function Sidebar(props: SidebarProps) {
   // Trigger the matching algorithm and sorting algorithm
   const goSort = () => {
     props.setMatches([])
-    console.log(props.formInput)
+    //console.log(props.formInput)
   }
 
   // Reset filters to include ALL games

@@ -1,5 +1,12 @@
 import MatchResult from "../interfaces/MatchResult";
 
+/*
+The merge, heap, and quick sorting algorithms are based off of the lecture
+slides created for our Data Structures and Algorithms course, which can be found
+in this repository:
+https://github.com/COP3530/Instructional-Content
+*/
+
 function merge(arr: MatchResult[], left: number, mid: number, right: number) {
   let n1 = mid - left + 1;
   let n2 = right - mid;
@@ -12,7 +19,9 @@ function merge(arr: MatchResult[], left: number, mid: number, right: number) {
     arr2[i2] = arr[mid + 1 + i2];
 
   let i1 = 0, i2 = 0, i = left;
+  // While both arrays have data...
   while (i1 < n1 && i2 < n2) {
+    // Add the smallest number from each
     if (arr1[i1].matchRating > arr2[i2].matchRating) {
       arr[i] = arr1[i1];
       i1++;
@@ -22,6 +31,7 @@ function merge(arr: MatchResult[], left: number, mid: number, right: number) {
     }
     i++;
   }
+  // Then add the rest of the data...
   while (i1 < n1) {
     arr[i] = arr1[i1];
     i1++;
@@ -37,13 +47,20 @@ function merge(arr: MatchResult[], left: number, mid: number, right: number) {
 function mergeSortRecursive(arr: MatchResult[], left: number, right: number) {
   if (left < right) {
     let mid = Math.floor(left + (right - left) / 2);
+    // Merge sort the left and right sides
     mergeSortRecursive(arr, left, mid);
     mergeSortRecursive(arr, mid + 1, right);
+    // Merge the two halves of the array together
     merge(arr, left, mid, right);
   }
 }
 
+/**
+ * Sorts an array using the merge sort algorithm
+ * @param arr The array to be sorted (will be modified)
+ */
 export function mergeSort(arr: MatchResult[]) {
+  //console.log("Merge sort called")
   mergeSortRecursive(arr, 0, arr.length - 1)
 }
 
@@ -77,7 +94,12 @@ function minHeapifyDown(arr: MatchResult[], n: number, index: number) {
 
 }
 
+/**
+ * Sorts an array using the heap sort algorithm
+ * @param arr The array to be sorted (will be modified)
+ */
 export function heapSort(arr: MatchResult[]) {
+  //console.log("Heap sort called")
   for (let i = (Math.floor(arr.length / 2 - 1)); i >= 0; i--) {
     minHeapifyDown(arr, arr.length, i);
   }
@@ -126,15 +148,27 @@ function quickSortRecursive(arr: MatchResult[], low: number, high: number) {
 
   if (low < high) {
     let pivot = partition(arr, low, high);
+    // Quicksort the left and right sides
     quickSortRecursive(arr, low, pivot - 1);
     quickSortRecursive(arr, pivot + 1, high);
   }
 }
 
+/**
+ * Sorts an array using the quicksort algorithm
+ * @param arr The array to be sorted (will be modified)
+ */
 export function quickSort(arr: MatchResult[]) {
+  //console.log("Quicksort called")
   quickSortRecursive(arr, 0, arr.length - 1);
 }
 
+/**
+ * Calls Array.prototype.sort() on this array
+ * @param arr The array to be sorted (will be modified)
+ */
 export function jsSort(arr: MatchResult[]) {
+  //console.log("JS sort called")
+  // Use the JavaScript sort method
   arr.sort((a, b) => b.matchRating - a.matchRating);
 }  
