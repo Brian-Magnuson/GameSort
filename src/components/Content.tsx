@@ -39,7 +39,7 @@ export default function Content() {
     sortSelection: 'Merge',
   })
   const [findMatchRatingsToggle, setFindMatchRatingsToggle] =
-    React.useState<Boolean>(false)
+    React.useState<boolean>(false)
   // A list of matches after the calcMatchRatings function is run.
   // This default value tells GamesView not to render any games.
   const [matches, setMatches] = React.useState<MatchResult[]>([

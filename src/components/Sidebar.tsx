@@ -7,8 +7,8 @@ import MatchResult from '../interfaces/MatchResult'
 interface SidebarProps {
   formInput: FormInput
   setFormInput: React.Dispatch<React.SetStateAction<FormInput>>
-  findMatchRatingsToggle: Boolean
-  setFindMatchRatingsToggle: React.Dispatch<React.SetStateAction<Boolean>>
+  findMatchRatingsToggle: boolean
+  setFindMatchRatingsToggle: React.Dispatch<React.SetStateAction<boolean>>
   matches: MatchResult[]
   setMatches: React.Dispatch<React.SetStateAction<MatchResult[]>>
 }
@@ -166,10 +166,10 @@ export default function Sidebar(props: SidebarProps) {
             />
           </div>
 
-          <button className='sidebar__submit-button' type='submit'>
+          <button className='sidebar__submit-button' type='submit' disabled={props.findMatchRatingsToggle}>
             Sort
           </button>
-          <button className='sidebar__reset-button' onClick={goResetFilters}>
+          <button className='sidebar__reset-button' onClick={goResetFilters} disabled={props.findMatchRatingsToggle}>
             Reset filters
           </button>
         </form>

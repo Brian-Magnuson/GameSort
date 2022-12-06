@@ -10,7 +10,7 @@ import calculateMatchRatings from '../functions/calcMatchRatings'
 interface GamesViewProps {
   formInput: FormInput
   findMatchRatingsToggle: Boolean
-  setFindMatchRatingsToggle: React.Dispatch<React.SetStateAction<Boolean>>
+  setFindMatchRatingsToggle: React.Dispatch<React.SetStateAction<boolean>>
   matches: MatchResult[]
   setMatches: React.Dispatch<React.SetStateAction<MatchResult[]>>
 }
