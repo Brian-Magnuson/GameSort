@@ -64,6 +64,12 @@ export function mergeSort(arr: MatchResult[]) {
   mergeSortRecursive(arr, 0, arr.length - 1)
 }
 
+/**
+ * A heapify down function for a min heap
+ * @param arr The array to be sorted
+ * @param n The current length of the heap
+ * @param index The index of the element to be heapified down
+ */
 function minHeapifyDown(arr: MatchResult[], n: number, index: number) {
   //insert the new element at the end of the array and set child = arr.size()-1
   let smallest = index;
