@@ -3,14 +3,6 @@ import FormInput from '../interfaces/FormInput'
 import MatchResult from '../interfaces/MatchResult'
 import Fuse from 'fuse.js'
 
-// keywords - split string based on spaces and quotation marks
-// look to see if keyword matches in title and other form data
-
-// if game doesn't fit platform/genre/age ratings, dont show the game
-// game with xbox and pc would get only slightly platform rating than a game with one or the other
-
-// calculate something from rating * rating count, but also must change ratings counts to be more fair. like a sqrt graph
-
 interface SimilarityObject {
   [key: number]: number
 }
@@ -18,7 +10,6 @@ interface SimilarityObject {
 function parseKeywords(keywords: string) {
   let temp = keywords.match(/"[^"]*"|\S+/g)
   return temp
-  // if (temp != undefined) return temp.join(' | ')
 }
 
 function calculateMatchRatings(
@@ -26,6 +17,7 @@ function calculateMatchRatings(
   formInput: FormInput,
   newMatches: MatchResult[]
 ) {
+  // options for keyword fuzzy search
   const options = {
     ignoreLocation: true,
     includeScore: true,
@@ -45,6 +37,7 @@ function calculateMatchRatings(
     ],
   }
   const newData: NewGame[] = []
+  // loop through every game
   for (let i = 0; i < 128434; i++) {
     let currGame = data[i.toString()]
     let matchedAgeRatings = 0
@@ -52,6 +45,7 @@ function calculateMatchRatings(
     let genresWeight = 0
     let matchedPlatforms = 0
     let platformsWeight = 0
+    // if game is released before filtered date, continue to next game
     if ('afterReleaseDate' in formInput) {
       if (currGame['releaseDate'] != null) {
         let d1 = new Date(formInput['afterReleaseDate'] as string)
@@ -61,6 +55,7 @@ function calculateMatchRatings(
         }
       }
     }
+    // if game is released after filtered date, continue to next game
     if ('beforeReleaseDate' in formInput) {
       if (currGame['releaseDate'] != null) {
         let d1 = new Date(formInput['beforeReleaseDate'] as string)
@@ -68,6 +63,7 @@ function calculateMatchRatings(
         if (d2 > d1) continue
       }
     }
+    // if game rating count is below filtered count, continue to next game
     if (formInput['ratingCountAtLeast'] != null) {
       if (
         currGame['ratingCount'] != null &&
@@ -76,6 +72,7 @@ function calculateMatchRatings(
         continue
       }
     }
+    // if rating is lower than filtered range, continue to next game
     if (formInput['ratingsAtLeast'] != null) {
       if (
         currGame['rating'] != null &&
@@ -84,6 +81,7 @@ function calculateMatchRatings(
         continue
       }
     }
+    // if rating is above filtered range, continue to next game
     if (formInput['ratingsAtMost'] != null) {
       if (
         currGame['rating'] != null &&
@@ -92,12 +90,14 @@ function calculateMatchRatings(
         continue
       }
     }
+    // if age rating doesn't match filter, contine to next game
     formInput['ageRatings'].forEach((rating) => {
       if (currGame['ageRatings'] != null && rating == currGame['ageRatings']) {
         matchedAgeRatings++
       }
     })
     if (matchedAgeRatings == 0 && formInput['ageRatings'].length > 0) continue
+    // count matching genres and platforms. additional matching genres/platforms contribute to match rating sublinearly (cube root)
     formInput['genres'].forEach((genre) => {
       if (currGame['genres'] != null) {
         let currGenres = eval(currGame['genres'])
@@ -146,6 +146,7 @@ function calculateMatchRatings(
       url: currGame['url'],
     }
     let ratingCountAdjusted = 1
+    // adjust match rating using rating count and rating using
     if (currGame['ratingCount'] != undefined && currGame['ratingCount'] > 0)
       ratingCountAdjusted =
         currGame['ratingCount'] >= 100
@@ -160,6 +161,7 @@ function calculateMatchRatings(
       index: i,
     })
   }
+  // adjust match rating with keyword similarity ratings
   const fuse = new Fuse(newData, options)
   let keywordLength = 0
   let similaritiesObj: SimilarityObject = {}
