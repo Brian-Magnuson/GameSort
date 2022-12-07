@@ -2,6 +2,8 @@
 
 A search engine for video games with different sorting algorithms. Created as part of an assignment for our data structures and algorithms course.
 
+![image](https://user-images.githubusercontent.com/92892499/206064436-405c0591-5e2e-4ba8-9f4b-a9bf43aab191.png)
+
 ## Disclaimers
 
 Because this project was created for our data structures and algorithms assignment course assignment, we will NOT be maintaining this. If you would like to make your own changes this project, consider creating a fork.
