@@ -30,7 +30,8 @@ You can then click the provided link to open the app in your browser.
 
 ## Providing Data
 
-This repository does not provide any data for the program to use. The app will not load correctly if there is no data provided. To provide the data, create a file titled `data.json` in the `public/data` directory. The JSON object must adhere to the `GameInfo` interface specified in `src/interfaces/GameInfo.ts`
+This repository does not provide any data for the program to use. The app will not load correctly if there is no data provided. To provide the data, create a file titled `data.json` in the `public/data` directory. The JSON object must adhere to the `GameInfo` interface specified in `src/interfaces/GameInfo.ts`. We used data from the IDGB database: https://www.igdb.com/ and from the RAWG database: https://rawg.io/.
+
 
 ```ts
 interface Game {
